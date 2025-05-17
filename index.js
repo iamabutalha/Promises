@@ -3,12 +3,14 @@ const resultDiv = document.querySelector(".result");
 
 btn.addEventListener("click", () => {
   const inputValue = document.querySelector("#inputVal");
+  document.querySelector(".postDiv").innerHTML = "";
 
   fetch(`https://jsonplaceholder.typicode.com/users/${inputValue.value}`)
     .then((res) => {
       console.log(res);
       if (res.status !== 200) {
         resultDiv.innerHTML = `<h2>No user Found </h2>`;
+        document.querySelector(".postDiv").innerHTML = "";
         return;
       }
       return res.json();
@@ -21,6 +23,7 @@ btn.addEventListener("click", () => {
 
 
     `;
+
       resultDiv.innerHTML = HTML;
 
       let secondBtn = document.querySelector(".btnInside");
